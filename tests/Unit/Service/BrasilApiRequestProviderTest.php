@@ -6,7 +6,7 @@ use App\Service\AbstractRequestProvider;
 use App\Service\BrasilApiRequestProvider;
 use GuzzleHttp\Client;
 
-class BrasilApiRequestProviderTest extends AbstractRequestProviderTest
+class BrasilApiRequestProviderTest extends AbstractRequestProviderTestCase
 {
     protected function getMockResult(): string
     {

@@ -6,7 +6,7 @@ use App\Service\AbstractRequestProvider;
 use App\Service\IBGERequestProvider;
 use GuzzleHttp\Client;
 
-class IBGERequestProviderTest extends AbstractRequestProviderTest
+class IBGERequestProviderTest extends AbstractRequestProviderTestCase
 {
     protected function getMockResult(): string
     {
