@@ -38,6 +38,10 @@ Este comando executará uma pipeline contendo testes unitários
 e de integração (PHPUnit), de detecção de código sujo/complexo (Mess Detector)
 e de code style no padrão PSR-12 (PHPCS).
 
+Para visualizar a cobertura de código, deve-se configurar algum um plugin externo,
+como o XDEBUG, por exemplo. A visualização da cobertura de código será exibida no 
+console e também criada em HTML no diretório `.phpunit`.
+
 ### Executar cada step separadamente
 
 Para executar individualmente cada step, você pode utilizar os seguintes comandos:
