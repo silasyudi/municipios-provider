@@ -14,8 +14,16 @@
     </testsuites>
     <coverage>
         <include>
-            <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./app/DTO</directory>
+            <directory suffix=".php">./app/Enum</directory>
+            <directory suffix=".php">./app/Exceptions</directory>
+            <directory suffix=".php">./app/Http/Controllers</directory>
+            <directory suffix=".php">./app/Service</directory>
         </include>
+        <report>
+            <text outputFile="php://stdout" showOnlySummary="true"/>
+            <html outputDirectory=".phpunit/reports"/>
+        </report>
     </coverage>
     <php>
         <env name="APP_ENV" value="testing"/>
