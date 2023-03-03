@@ -24,6 +24,17 @@ php artisan serve
 
 O server executará em `localhost` na porta 8000. 
 
+## Providers
+
+Este projeto tem dois provedores: Api do IBGE e Api do BrasilAPI. Para escolher
+um dos dois, é obrigatório ter nas variáveis de ambiente `(.env)` a seguinte informação:
+
+```
+PROVIDER={API}
+```
+
+Substitua `{API}` por IBGE ou por BRASIL_API para efetuar a escolha por uma ou por outra opção.
+
 ## Swagger
 
 A documentação da API pode ser encontrada [aqui](docs/api.yaml).
