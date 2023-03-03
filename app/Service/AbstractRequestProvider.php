@@ -37,7 +37,7 @@ abstract class AbstractRequestProvider
 
     abstract protected function extract(string $content): array;
 
-    final public function request(Estado $uf): array
+    public function request(Estado $uf): array
     {
         $url = $this->getUrl($uf);
 
