@@ -1,5 +1,9 @@
 # Provider de Municípios
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/eb2561d54f704d6c0b0d/test_coverage)](https://codeclimate.com/github/silasyudi/municipios-provider/test_coverage)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/eb2561d54f704d6c0b0d/maintainability)](https://codeclimate.com/github/silasyudi/municipios-provider/maintainability)
+
 Projeto experimental para prover uma API de busca de municípios do Brasil por UF.
 
 ## Dependências

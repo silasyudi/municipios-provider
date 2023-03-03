@@ -32,3 +32,8 @@ jobs:
       - name: Run test suite
         run: |
           XDEBUG_MODE=coverage composer run-script pipeline
+
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE }}
