@@ -48,7 +48,7 @@ abstract class AbstractRequestProvider
                 },
                 function (RequestException $exception): void {
                     throw new Exception(
-                        'Ocorreu um erro no provedor de municípios. Motivo: ' . $exception->getMessage()
+                        'An error occurred in the municipalities provider. Reason: ' . $exception->getMessage()
                     );
                 }
             )
