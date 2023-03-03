@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Enum\Estado;
+use Closure;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -28,7 +29,31 @@ abstract class AbstractRequestProvider
         );
     }
 
-    final protected function getSerializer(): SerializerInterface
+    public function request(Estado $uf): array
+    {
+        $url = $this->getUrl($uf);
+
+        return $this->client->getAsync($url)
+            ->then(
+                Closure::fromCallable([$this, 'onFulfilled']),
+                Closure::fromCallable([$this, 'onRejected'])
+            )
+            ->wait();
+    }
+
+    private function onFulfilled(ResponseInterface $response): array
+    {
+        return $this->extract($response->getBody()->getContents());
+    }
+
+    private function onRejected(RequestException $exception): void
+    {
+        throw new Exception(
+            'An error occurred in the municipalities provider. Reason: ' . $exception->getMessage()
+        );
+    }
+
+    protected function getSerializer(): SerializerInterface
     {
         return $this->serializer;
     }
@@ -36,22 +61,4 @@ abstract class AbstractRequestProvider
     abstract protected function getUrl(Estado $uf): string;
 
     abstract protected function extract(string $content): array;
-
-    public function request(Estado $uf): array
-    {
-        $url = $this->getUrl($uf);
-
-        return $this->client->getAsync($url)
-            ->then(
-                function (ResponseInterface $response): array {
-                    return $this->extract($response->getBody()->getContents());
-                },
-                function (RequestException $exception): void {
-                    throw new Exception(
-                        'An error occurred in the municipalities provider. Reason: ' . $exception->getMessage()
-                    );
-                }
-            )
-            ->wait();
-    }
 }
