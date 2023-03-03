@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
@@ -21,7 +22,10 @@ abstract class AbstractRequestProvider
     public function __construct(Client $client)
     {
         $this->client = $client;
-        $this->serializer = new Serializer([new PropertyNormalizer(), new ArrayDenormalizer()], [new JsonEncoder()]);
+        $this->serializer = new Serializer(
+            [new PropertyNormalizer(null, new CamelCaseToSnakeCaseNameConverter()), new ArrayDenormalizer()],
+            [new JsonEncoder()]
+        );
     }
 
     final protected function getSerializer(): SerializerInterface
