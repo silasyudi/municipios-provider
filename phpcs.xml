@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="ASH2">
+    <description>PHP Code Sniffer</description>
+    <arg name="extensions" value="php" />
+    <arg name="colors" />
+    <autoload>./vendor/autoload.php</autoload>
+    <rule ref="PSR12"/>
+    <file>app/</file>
+    <exclude-pattern>app/Console</exclude-pattern>
+    <exclude-pattern>app/Http/Kernel.php</exclude-pattern>
+    <exclude-pattern>vendor</exclude-pattern>
+</ruleset>

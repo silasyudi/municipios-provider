@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: Provider de Municípios
+  description: |-
+    Projeto experimental para prover uma API de busca de municípios do Brasil por UF.
+  version: 1.0.11
+servers:
+  - url: http://localhost:8000/api
+tags:
+  - name: municipio
+paths:
+  /municipio/{uf}:
+    get:
+      tags:
+        - municipio
+      summary: Recupera lista de municípios de uma UF pela sua sigla
+      description: Recupera lista de municípios de uma UF pela sua sigla
+      parameters:
+        - name: uf
+          in: path
+          description: Sigla da UF
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayMunicipios'
+        '404':
+          description: UF não existe
+        '500':
+          description: Server error
+
+components:
+  schemas:
+    ArrayMunicipios:
+      type: array
+      items:
+        $ref: '#/components/schemas/Municipio'
+    Municipio:
+      type: object
+      properties:
+        ibge_code:
+          type: string
+          example: '2507507'
+        name:
+          type: string
+          example: 'João Pessoa'

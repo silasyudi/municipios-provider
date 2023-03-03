@@ -13,7 +13,8 @@ class MunicipiosResolver
         $this->provider = $provider;
     }
 
-    public function getByUf(Estado $uf): array {
+    public function getByUf(Estado $uf): array
+    {
         return $this->provider->request($uf);
     }
 }
